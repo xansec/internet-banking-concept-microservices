@@ -1,0 +1,10 @@
+image: ghcr.io/xansec/internet-banking-concept-microservices/core-banking-service:latest
+project: internet-banking-concept-microservices
+target: fund-transfer
+
+cmds:
+  - cmd: /app/jazzer --cp=/core-banking-service.jar --autofuzz=com.javatodev.finance.controller.TransactionController::fundTransfer --autofuzz_ignore=java.lang.NullPointerException
+    libfuzzer: true
+    env:
+      MFUZZ_COMPAT_LEVEL: "1"
+    timeout: 45

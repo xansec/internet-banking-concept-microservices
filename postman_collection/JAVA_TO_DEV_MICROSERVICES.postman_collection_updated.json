@@ -1,0 +1,453 @@
+{
+	"info": {
+		"_postman_id": "a8ff133e-aeb7-4e34-913a-2e300291cfad",
+		"name": "JAVA_TO_DEV_MICROSERVICES",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28265500",
+		"_collection_link": "https://forallsecure-customersolutions.postman.co/workspace/5f0b49bb-0a84-4650-bd71-c2308b3563b1/collection/28265500-a8ff133e-aeb7-4e34-913a-2e300291cfad?action=share&source=collection_link&creator=28265500"
+	},
+	"item": [
+		{
+			"name": "BANKING_CORE_MICROSERVICES",
+			"item": [
+				{
+					"name": "API_HEALTH",
+					"item": [
+						{
+							"name": "USER_API_HEALTH",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_gateway_host}}/user/actuator/health",
+									"host": [
+										"{{api_gateway_host}}"
+									],
+									"path": [
+										"user",
+										"actuator",
+										"health"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FUND_TRANSFER_API_HEALTH",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_gateway_host}}/fund-transfer/actuator/health",
+									"host": [
+										"{{api_gateway_host}}"
+									],
+									"path": [
+										"fund-transfer",
+										"actuator",
+										"health"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "BANKING_CORE_SERVICE",
+					"item": [
+						{
+							"name": "FUND_TRANSFER",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"fromAccount\": \"100015003001\",\n    \"toAccount\": \"100015003000\",\n    \"amount\": 2000.00\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_gateway_host}}/banking-core/api/v1/transaction/fund-transfer",
+									"host": [
+										"{{api_gateway_host}}"
+									],
+									"path": [
+										"banking-core",
+										"api",
+										"v1",
+										"transaction",
+										"fund-transfer"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "READ_USER_BY_NIC",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_gateway_host}}/banking-core/api/v1/user",
+									"host": [
+										"{{api_gateway_host}}"
+									],
+									"path": [
+										"banking-core",
+										"api",
+										"v1",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "READ_BANK_ACCOUNT_BY_NUMBER",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_gateway_host}}/banking-core/api/v1/account/bank-account/100015003000",
+									"host": [
+										"{{api_gateway_host}}"
+									],
+									"path": [
+										"banking-core",
+										"api",
+										"v1",
+										"account",
+										"bank-account",
+										"100015003000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "READ_UTIL_ACCOUNT_BY_PROVIDER_NAME",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_gateway_host}}/banking-core/api/v1/account/util-account/HUTCH",
+									"host": [
+										"{{api_gateway_host}}"
+									],
+									"path": [
+										"banking-core",
+										"api",
+										"v1",
+										"account",
+										"util-account",
+										"HUTCH"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UTILITY_PAYMENT",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"providerId\": 2,\n    \"amount\": 250,\n    \"referenceNumber\": \"0712402547\",\n    \"account\": \"100015003000\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_gateway_host}}/banking-core/api/v1/transaction/util-payment",
+									"host": [
+										"{{api_gateway_host}}"
+									],
+									"path": [
+										"banking-core",
+										"api",
+										"v1",
+										"transaction",
+										"util-payment"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "READ_ALL_USERS_BANKING_CORE",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_gateway_host}}/banking-core/api/v1/user",
+									"host": [
+										"{{api_gateway_host}}"
+									],
+									"path": [
+										"banking-core",
+										"api",
+										"v1",
+										"user"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "BANKING_CORE_USER_SERVICE",
+					"item": [
+						{
+							"name": "READ_USER_LIST",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_gateway_host}}/user/api/v1/bank-users",
+									"host": [
+										"{{api_gateway_host}}"
+									],
+									"path": [
+										"user",
+										"api",
+										"v1",
+										"bank-users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CREATE_USER",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"password\": \"123\",\n    \"email\": \"guru@gmail.com\",\n    \"identification\": \"901830556V\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_gateway_host}}/user/api/v1/bank-users/register",
+									"host": [
+										"{{api_gateway_host}}"
+									],
+									"path": [
+										"user",
+										"api",
+										"v1",
+										"bank-users",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "READ_USER_AUTH_ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_gateway_host}}/user/api/v1/bank-users/37aa1f5f-2c9f-4e73-a1f1-d7a216851b69555",
+									"host": [
+										"{{api_gateway_host}}"
+									],
+									"path": [
+										"user",
+										"api",
+										"v1",
+										"bank-users",
+										"37aa1f5f-2c9f-4e73-a1f1-d7a216851b69555"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UPDATE_USER",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"status\": \"APPROVED\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_gateway_host}}/user/api/v1/bank-users/update/25",
+									"host": [
+										"{{api_gateway_host}}"
+									],
+									"path": [
+										"user",
+										"api",
+										"v1",
+										"bank-users",
+										"update",
+										"25"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "FUND_TRANSFER_SERVICE",
+					"item": [
+						{
+							"name": "FUND_TRANSFER",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"fromAccount\": \"100015003001\",\n    \"toAccount\": \"100015003000\",\n    \"amount\": 1250.34\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_gateway_host}}/fund-transfer/api/v1/transfer",
+									"host": [
+										"{{api_gateway_host}}"
+									],
+									"path": [
+										"fund-transfer",
+										"api",
+										"v1",
+										"transfer"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "UTIL_PAYMENTS",
+					"item": [
+						{
+							"name": "UTILITY_PAYMENT",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"providerId\": 2,\n    \"amount\": 2000,\n    \"referenceNumber\": \"0712402547\",\n    \"account\": \"100015003000\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_gateway_host}}/utility-payment/api/v1/utility-payment",
+									"host": [
+										"{{api_gateway_host}}"
+									],
+									"path": [
+										"utility-payment",
+										"api",
+										"v1",
+										"utility-payment"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "oauth2",
+				"oauth2": [
+					{
+						"key": "accessTokenUrl",
+						"value": "{{keycloack_host}}/realms/{{keycloack_realm}}/protocol/openid-connect/token",
+						"type": "string"
+					},
+					{
+						"key": "password",
+						"value": "5V7huE3G86uB",
+						"type": "string"
+					},
+					{
+						"key": "username",
+						"value": "ib_admin@javatodev.com",
+						"type": "string"
+					},
+					{
+						"key": "scope",
+						"value": "email",
+						"type": "string"
+					},
+					{
+						"key": "grant_type",
+						"value": "password_credentials",
+						"type": "string"
+					},
+					{
+						"key": "clientSecret",
+						"value": "{{keycloack_client_secret}}",
+						"type": "string"
+					},
+					{
+						"key": "clientId",
+						"value": "{{keycloack_client_id}}",
+						"type": "string"
+					},
+					{
+						"key": "tokenName",
+						"value": "banking_core_token",
+						"type": "string"
+					},
+					{
+						"key": "addTokenTo",
+						"value": "header",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,10 @@
+image: ghcr.io/xansec/internet-banking-concept-microservices/core-banking-service:latest
+project: internet-banking-concept-microservices
+target: core-banking-service-harness
+
+cmds:
+  - cmd: /app/jazzer --cp=/core-banking-service.jar --target_class=com.javatodev.finance.CoreBankingServiceHarness
+    libfuzzer: true
+    env:
+      MFUZZ_COMPAT_LEVEL: "1"
+    timeout: 45

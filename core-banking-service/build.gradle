@@ -3,6 +3,7 @@ plugins {
     id 'org.springframework.boot' version '3.2.4'
     id 'io.spring.dependency-management' version '1.1.4'
     id "com.gorylenko.gradle-git-properties" version "2.4.2"
+    id 'com.gradleup.shadow' version '8.3.3'
 }
 
 gitProperties {
@@ -13,9 +14,9 @@ gitProperties {
 group = 'com.javatodev.finance'
 version = '0.0.1-SNAPSHOT'
 
-java {
-    sourceCompatibility = '21'
-}
+// java {
+//     sourceCompatibility = '21'
+// }
 
 repositories {
     mavenCentral()
@@ -24,6 +25,15 @@ repositories {
 ext {
     set('springCloudVersion', "2023.0.0")
 }
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java', 'src/harness/java']
+        }
+    }
+}
+
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -51,6 +61,11 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'com.h2database:h2:2.2.224'
 
+    //Fuzzed data provider
+    implementation 'com.code-intelligence:jazzer-api:0.22.1'
+
+    //Mockito
+    implementation 'org.mockito:mockito-core:4.11.0'
 
 }
 
@@ -62,4 +77,5 @@ dependencyManagement {
 
 test {
     useJUnitPlatform()
+    enabled = project.hasProperty('runTests')
 }
