@@ -17,6 +17,6 @@ nohup rust-openid-token-plugin \
 PLUGIN_PID=$!
 echo $PLUGIN_PID
 
-mapi run internet-banking-concept-microservices/api auto ./postman_collection/JAVA_TO_DEV_MICROSERVICES.postman_collection_updated.json --postman-environment-id ./postman_collection/BANKING_CORE_MICROSERVICES_PROJECT.postman_environment_updated.json --url http://172.25.0.6:8082 --header 'Content-Type: application/json' --rewrite-plugin http://localhost:50051
+mapi run internet-banking-concept-microservices/api 1m ./postman_collection/JAVA_TO_DEV_MICROSERVICES.postman_collection_updated.json --postman-environment-id ./postman_collection/BANKING_CORE_MICROSERVICES_PROJECT.postman_environment_updated.json --url http://172.25.0.6:8082 --header 'Content-Type: application/json' --rewrite-plugin http://localhost:50051 --interactive
 
 kill -9 $PLUGIN_PID || true
